@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +20,12 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/auth/redirect', function () {
-//     return Socialite::driver('facebook')->redirect();
-// });
+Route::get('login/{driver}', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
+Route::get('login/{driver}/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback']);
 
-// Route::get('/auth/callback', function () {
-//     $user = Socialite::driver('facebook')->user();
+Route::get('contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+Route::post('contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 
-//     // $user->token
-// });
-
-
-Route::get('login/{driver}', [LoginController::class, 'redirectToProvider']);
-Route::get('login/{driver}/callback', [LoginController::class, 'handleProviderCallback']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
