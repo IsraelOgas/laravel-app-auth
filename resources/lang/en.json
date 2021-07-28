@@ -191,5 +191,14 @@
     "You may not delete your personal team.": "You may not delete your personal team.",
     "You may not leave a team that you created.": "You may not leave a team that you created.",
     "Your email address is not verified.": "Your email address is not verified.",
-    "Users": "Users"
+    "Users": "Users",
+    "Actions": "Actions",
+    "No records": "No records",
+    "Assign role": "Assign role",
+    "List of roles": "List of roles",
+    "Roles were assigned correctly": "Roles were assigned correctly",
+    "Search user placeholder": "Enter a user's name or email address",
+    "Or": "or",
+    "Sign in with facebook": "Sign in with Facebook",
+    "Sign in with google": "Sign in with Google"
 }

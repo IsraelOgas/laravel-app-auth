@@ -12,10 +12,17 @@ class UsersIndex extends Component
     use WithPagination;
 
     // protected $paginationTheme = "";
+    public $search;
+
+    public function updatingSearch() {
+        $this->resetPage();
+    }
 
     public function render()
     {
-        $users = User::paginate();
+        $users = User::where('name', 'LIKE', '%'. $this->search .'%')
+                    ->orWhere('email', 'LIKE', '%'. $this->search .'%')
+                    ->paginate();
 
         return view('livewire.users-index', compact('users'));
     }

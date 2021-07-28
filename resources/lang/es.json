@@ -191,5 +191,14 @@
     "You may not delete your personal team.": "No se puede borrar su equipo personal.",
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
     "Your email address is not verified.": "Su dirección de correo electrónico no está verificada.",
-    "Users": "Usuarios"
+    "Users": "Usuarios",
+    "Actions": "Acciones",
+    "No records": "No hay registros",
+    "Assign role": "Asignar rol",
+    "List of roles": "Listado de roles",
+    "Roles were assigned correctly": "Los roles se asignaron correctamente",
+    "Search user placeholder": "Ingrese un nombre o correo de un usuario",
+    "Or": "o",
+    "Sign in with facebook": "Iniciar sesión con Facebook",
+    "Sign in with google": "Iniciar sesión con Google"
 }

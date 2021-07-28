@@ -26,7 +26,7 @@ Route::get('login/{driver}/callback', [\App\Http\Controllers\Auth\LoginControlle
 Route::get('contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 
-Route::resource('users', \App\Http\Controllers\UserController::class)->names('users');
+Route::resource('users', \App\Http\Controllers\UserController::class)->only(['index', 'edit', 'update'])->names('users');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
