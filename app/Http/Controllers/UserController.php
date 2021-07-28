@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Exception;
 
 use Spatie\Permission\Models\Role;
 
@@ -73,10 +74,17 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->roles()->sync($request->roles);
-        $request->session()->flash('flash.banner', __('Roles were assigned correctly'));
+        try {
+            $user->roles()->sync($request->roles);
+            $request->session()->flash('flash.banner', __('Roles were assigned correctly') .' '. __('to') .' '. $user->name);
+            $request->session()->flash('flash.bannerStyle', 'success');
 
-        return redirect()->route('users.edit', $user)->with('info', __('Roles were assigned correctly'));
+            return redirect()->route('users.edit', $user);
+            // ->with('info', __('Roles were assigned correctly'));
+        } catch (Exception $exception) {
+            $request->session()->flash('flash.banner', 'No se pudo actualizar los roles');
+            $request->session()->flash('flash.bannerStyle', 'danger');
+        }
     }
 
     /**

@@ -1,7 +1,8 @@
 <div class="py-2">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col">
-            <input type="text" wire:model.debounce.700ms="search" class="border-gray-200 rounded-sm mb-6 sm:mx-6 lg:mx-8"
+            <input type="text" wire:model.debounce.700ms="search"
+                class="border-gray-200 rounded-sm mb-6 sm:mx-6 lg:mx-8"
                 placeholder="{{ __('Search user placeholder') }}">
             @if ($users->count())
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 border-t border-gray-200">
