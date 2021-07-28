@@ -39,6 +39,9 @@
                         <a href="{{ route('contact.index') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="Contact">Contact</a>
                     </li>
                     <li>
+                        <a href="{{ route('users.index') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="User List">User List</a>
+                    </li>
+                    <li>
                         <a href="https://laravel.com/docs" class="no-underline hover:underline text-sm font-normal text-teal-800 uppercase" title="Documentation">Documentation</a>
                     </li>
                     <li>
