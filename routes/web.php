@@ -23,11 +23,14 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::get('login/{driver}', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider']);
 Route::get('login/{driver}/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback']);
 
-Route::get('contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
-Route::post('contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+// Route::get('contact', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
+// Route::post('contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
+Route::resource('contact', \App\Http\Controllers\ContactController::class)->only(['index', 'store'])->names('contact');
 
 Route::resource('users', \App\Http\Controllers\UserController::class)->only(['index', 'edit', 'update'])->names('users');
+Route::resource('roles', \App\Http\Controllers\RoleController::class)->names('roles');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified', 'can:show dashboard'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

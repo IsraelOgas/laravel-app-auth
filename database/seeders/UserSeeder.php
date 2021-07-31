@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -20,6 +21,9 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password')
         ])->assignRole('Admin');
 
-        User::factory(99)->create();
+        $users = User::factory(49)->create();
+        $role = Role::findByName('Client');
+
+        $role->users()->attach($users);
     }
 }
